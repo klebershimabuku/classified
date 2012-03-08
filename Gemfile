@@ -9,6 +9,9 @@ gem 'mysql2'
 gem 'devise'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem 'carrierwave'
+gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
+gem 'rmagick'
 
 
 # Gems used only for assets and not required

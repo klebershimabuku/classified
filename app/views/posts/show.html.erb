@@ -1,19 +1,19 @@
-<h1>Post</h1>
+<h1><%= @post.title %></h1>
+
+<%= simple_format(@post.description) %>
 
 <p>
-  <b>Title</b><br>
-  <%= @post.title %>
-</p>
-
-<p>
-  <b>Description</b><br>
-  <%= @post.description %>
-</p>
-
-<p>
-  <b>Price</b><br>
+  <b>Preço</b><br>
   <%= @post.price %>
 </p>
+
+<div id="gallery">
+  <ul>
+  <% @post.attachments.each do |file| %>
+     <li><a href="<%= file.file_url(:default) %>"><%= image_tag file.file_url(:small) %></a></li>
+  <% end %>
+  </ul>
+</div>
 
 <div class="form-actions">
   <%= link_to 'Back', posts_path, :class => 'btn'  %>

@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
-jQuery(function ($) {
-    $("abbr.timestamp").timeago();
-}
+$(function() {
+  $('#gallery a').lightBox();
+});

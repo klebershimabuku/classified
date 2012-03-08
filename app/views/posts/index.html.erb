@@ -1,11 +1,28 @@
-<h1>Anuncios mais recentes</h1>
 
-<ul class="unstyled">
+<div class="row9">
+  <div class='pull-left'>
+    <div class="page-header">
+      <h1>Anúncios mais recentes</h1>
+    </div>
+  </div>
+  <div class='pull-right'>
+    <%= link_to 'Novo anúncio', new_post_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class='clear'></div>
+
+<div class='feeds'>
+
   <% @posts.each do |post| %>
-  <li><%= link_to post.title, post_path(post) %></li>
-  <li><%= post.description %></li>
-  <li>Enviado há <%= time_ago_in_words(post.created_at) %></li>
+  <% unless post.attachments.blank? %>
+    <div class='image'><%= link_to(image_tag(post.attachments.first.file_url(:thumb)), post_path(post)) %></div>
+  <% else %>
+    <div class='image'><div class='no_image'>Sem <br />imagem</div></div>
   <% end %>
-</ul>
 
-<%= link_to 'New', new_post_path, :class => 'btn btn-primary' %>
+    <p class='title'><%= link_to post.title, post_path(post) %></p>
+    <p class='summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
+    <p class='timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>
+  <% end %>
+</div>

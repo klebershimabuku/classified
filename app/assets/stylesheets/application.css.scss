@@ -1,0 +1,63 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+*/
+
+div.feeds {
+  
+  div.image {
+    float: left;
+    padding-right: 5px;
+
+    div.no_image {
+      display: block;
+      padding-top: 10px;
+      width:80px;
+      height:50px;
+      background: #eee;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+  }
+  
+  p {
+    &.title { font-size: 150%; }
+    &.description { font-size: 120%; }
+    &.timestamp { 
+      font-size: 100%; 
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+  }
+}
+.clear {
+  clear: both;
+}
+
+	/* jQuery lightBox plugin - Gallery style */
+	#gallery {
+		background-color: #FFF;
+		padding: 10px;
+		width: 520px;
+	}
+	#gallery ul { list-style: none; }
+	#gallery ul li { display: inline; }
+	#gallery ul img {
+		border: 5px solid #3e3e3e;
+		border-width: 5px 5px 20px;
+	}
+	#gallery ul a:hover img {
+		border: 5px solid #444;
+		border-width: 5px 5px 20px;
+		color: #fff;
+	}
+	#gallery ul a:hover { color: #fff; }
