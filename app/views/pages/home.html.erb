@@ -1,3 +1,10 @@
+<% if user_signed_in? %>
+
+  <%= render @posts %>
+
+<% else %>
+
+
 <div class="hero-unit">
   <h1>Quer vender seu carro, sua moto, seu avião ou seu barco?</h1>
   <p>Carecia.com - O lugar ideal para o seu negócio.</p>
@@ -9,3 +16,5 @@
   </p>
 
 </div>
+
+<% end %>
