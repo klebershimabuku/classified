@@ -25,4 +25,6 @@
     <p class='summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
     <p class='timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>
   <% end %>
+
+  <p><%= paginate @posts %></p>
 </div>

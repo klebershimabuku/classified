@@ -12,6 +12,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'carrierwave'
 gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 gem 'rmagick'
+gem 'kaminari'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.6"
