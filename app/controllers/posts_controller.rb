@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.page(params[:page])
+    @posts = current_user.feed.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

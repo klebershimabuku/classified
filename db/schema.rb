@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120308110301) do
+ActiveRecord::Schema.define(:version => 20120309063203) do
 
   create_table "attachments", :force => true do |t|
     t.text     "description"
@@ -28,8 +28,9 @@ ActiveRecord::Schema.define(:version => 20120308110301) do
     t.string   "title"
     t.text     "description"
     t.decimal  "price",       :precision => 10, :scale => 2
-    t.datetime "created_at",                                 :null => false
-    t.datetime "updated_at",                                 :null => false
+    t.datetime "created_at",                                                        :null => false
+    t.datetime "updated_at",                                                        :null => false
+    t.string   "status",                                     :default => "pending"
   end
 
   create_table "users", :force => true do |t|
