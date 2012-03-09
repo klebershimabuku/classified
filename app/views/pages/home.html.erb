@@ -1,6 +1,16 @@
 <% if user_signed_in? %>
 
-  <%= render @posts %>
+  <% if @posts.any? %>
+
+    <div class="page-header">
+      <h1>Anúncios Recentes</h1>
+    </div>
+
+    <div class='feeds'>
+    <%= render partial: 'shared/post', collection: @posts %>
+    </div>
+  <% end %>
+  <%= paginate @posts %>
 
 <% else %>
 

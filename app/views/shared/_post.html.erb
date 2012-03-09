@@ -1,0 +1,8 @@
+<% unless post.attachments.blank? %>
+  <div class='image'><%= link_to(image_tag(post.attachments.first.file_url(:thumb)), post_path(post)) %></div>
+<% else %>
+  <div class='image'><div class='no_image'>Sem <br />imagem</div></div>
+<% end %>
+  <p class='title'><%= link_to post.title, post_path(post) %></p>
+  <p class='summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
+  <p class='timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>

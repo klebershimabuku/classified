@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
 
   after_destroy :remove_id_directory, :remove_tmp_directory
 
+  belongs_to :user
+
   default_scope :order => 'id DESC'
   validates :title, :presence => true
 

@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
+  has_many :posts, dependent: :destroy
 
   def feed
-    Post.active.order('id desc')
+    Post.where("user_id = ?", id).order('id desc')
   end
 
 end

@@ -2,7 +2,7 @@
 <div class="row9">
   <div class='pull-left'>
     <div class="page-header">
-      <h1>Anúncios mais recentes</h1>
+      <h1>Meus anúncios</h1>
     </div>
   </div>
   <div class='pull-right'>
@@ -11,23 +11,10 @@
 </div>
 
 <div class='clear'></div>
-
 <div class='feeds'>
-
-<% unless @posts.empty? %>
-  <% @posts.each do |post| %>
-  <% unless post.attachments.blank? %>
-    <div class='image'><%= link_to(image_tag(post.attachments.first.file_url(:thumb)), post_path(post)) %></div>
-  <% else %>
-    <div class='image'><div class='no_image'>Sem <br />imagem</div></div>
-  <% end %>
-    <p class='title'><%= link_to post.title, post_path(post) %></p>
-    <p class='summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
-    <p class='timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>
+  <% if @posts.any? %>
+    <%= render partial: 'shared/post', collection: @posts %>
   <% end %>
 
-  <p><%= paginate @posts %></p>
-<% else %>
-  <p>Não existem anúncios ativos no momento. <br />Por favor, verifique dentro de instantes.</p>
-<% end %>
+  <%= paginate @posts %>
 </div>
