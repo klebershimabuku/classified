@@ -31,7 +31,7 @@
     <div class="control-group">
       <%= f.label :price, "Preço", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :price, :class => 'text_field' %>
+        <%= f.text_field :price, :class => 'text_field', :value => number_with_precision(f.object.price, :precision => 0) %>
       </div>
     </div>
 
@@ -42,6 +42,7 @@
         <%= image_tag attachment_form.object.file_url(:small) if attachment_form.object.file? %><br />
         <%= attachment_form.link_to_remove "Remover a imagem acima" %><br />ou
         <%= attachment_form.file_field :file, :class => 'input-file' %>
+        <%= attachment_form.hidden_field :file_cache %>
       </div>
     </div>
   <% end %>
