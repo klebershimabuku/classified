@@ -4,4 +4,5 @@ class PagesController < ApplicationController
       @posts = Post.active.page(params[:page])
     end
   end
+
 end

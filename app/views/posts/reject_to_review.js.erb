@@ -1,0 +1,16 @@
+$('#remote-message').empty();
+
+$('#remote-message').fadeToggle('slow', function() {
+
+  $('#remote-message').append("<%= escape_javascript( 
+      simple_format("<span class='label label-info'>Anuncio marcado para revisão!</span>") 
+    ) %>");
+
+  $('#status').fadeIn(1500, function() {
+      $('#status').empty();
+      $('#status').append("<span class='label label-warning'>Revisão!</span>");
+  });
+
+});
+
+$('#remote-message').fadeOut(3000);

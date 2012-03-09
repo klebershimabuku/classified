@@ -29,7 +29,13 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user icon-white" style="font-size: 20px;"></i><b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><%= link_to "Meu perfil", edit_registration_path(current_user) %></li>
+            <% if user? or admin? %>
             <li><%= link_to "Meus anúncios", posts_path %></li>
+            <% end %>
+
+            <% if admin? %>
+            <li><%= link_to "Anúncios pendentes", pendings_posts_path %></li>
+            <% end %>
             <li class="divider"></li>
             <li><%= link_to "Sair", destroy_user_session_path, method: :delete %></li>
           </ul>

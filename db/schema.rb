@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309085144) do
+ActiveRecord::Schema.define(:version => 20120309132114) do
 
   create_table "attachments", :force => true do |t|
     t.text     "description"
@@ -30,15 +30,15 @@ ActiveRecord::Schema.define(:version => 20120309085144) do
     t.decimal  "price",       :precision => 10, :scale => 2
     t.datetime "created_at",                                                        :null => false
     t.datetime "updated_at",                                                        :null => false
-    t.string   "status",                                     :default => "pending"
     t.integer  "user_id"
+    t.string   "status",                                     :default => "pending"
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "email",                  :default => "",     :null => false
+    t.string   "encrypted_password",     :default => "",     :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -47,8 +47,9 @@ ActiveRecord::Schema.define(:version => 20120309085144) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+    t.string   "role",                   :default => "user"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-
+  load_and_authorize_resource
   before_filter :authenticate_user!, :except => [:index, :show]
+  respond_to :html, :js
+
   # GET /posts
   # GET /posts.json
   def index
     @posts = current_user.feed.page(params[:page])
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -82,4 +83,26 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def pendings
+    @pending_posts = Post.pending.page(params[:page])
+  end
+
+
+  def approve
+    @post = Post.find(params[:id]).activate!
+    respond_with(@post, :layout => !request.xhr?)
+  end
+
+  def reject_to_review
+    @post = Post.find(params[:id]).review!
+    respond_with(@post, :layout => !request.xhr?)
+  end
+
+  def expire
+    @post = Post.find(params[:id]).expire!
+    respond_with(@post, :layout => !request.xhr?)
+  end
+
+
 end

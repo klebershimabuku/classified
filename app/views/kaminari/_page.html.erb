@@ -8,9 +8,10 @@
     remote:        data-remote
 -%>
 <% if page.current? %>
-<li class='active'><a href="#"><%= link_to_unless page.current?, page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %></a>
+<li class="active"><a href="#">
+  <%= link_to_unless page.current?, page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %></a>
 <% else %>
-<li><%= link_to_unless page.current?, page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
+<li>
+  <%= link_to_unless page.current?, page, url, opts = {:remote => remote, :rel => page.next? ? 'next' : page.prev? ? 'prev' : nil} %>
 <% end %>
-
 </li>

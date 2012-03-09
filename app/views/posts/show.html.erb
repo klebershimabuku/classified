@@ -1,3 +1,17 @@
+<% if admin? %>
+<div id="status">
+  <% if @post.status == 'active' %>
+  <span class='label label-success'>Ativado!</span>
+  <% elsif @post.status == 'pending' %>
+  <span class='label label-warning'>Pendente!</span>
+  <% elsif @post.status == 'review' %>
+  <span class='label label-warning'>Revisão!</span>
+  <% elsif @post.status == 'expired' %>
+  <span class='label label-danger'>Expirado!</span>
+  <% end %>
+</div>
+<% end %>
+
 <h1><%= @post.title %></h1>
 
 <%= simple_format(@post.description) %>
@@ -15,8 +29,31 @@
   </ul>
 </div>
 
+<div id='remote-message' class='pull-right'></div>
+
 <div class="form-actions">
+
+<% if can? :update, @post %>
   <%= link_to 'Back', posts_path, :class => 'btn'  %>
   <%= link_to 'Edit', edit_post_path(@post), :class => 'btn' %>
+<% end %>
+
+<% if can? :destroy, @post %>
   <%= link_to 'Delete', post_path(@post), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+<% end %>
+
+<% if can? :expire, Post %>
+<div class="btn-group pull-right">
+    <%= link_to "Aprovar", approve_post_path(@post), :remote => true , :class => 'btn btn-success' %>
+     <a class="btn btn-warning" href="#">Revisão</a>
+        <a class="btn btn-warning dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Anúncio sem foto</a></li>
+          <li class="divider"></li>
+          <li><%= link_to "Sem motivo", reject_to_review_post_path(@post), :remote => true  %></li>
+          <li><a href="#">Informar motivo</a></li>
+        </ul>
+    <%= link_to "Expirar", expire_post_path(@post), :remote => true , :class => 'btn btn-danger' %>
+</div>
+<% end %>
 </div>

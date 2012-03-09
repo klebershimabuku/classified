@@ -1,7 +1,7 @@
 <div class="row9">
   <div class='pull-left'>
     <div class="page-header">
-      <h1>Meus anúncios</h1>
+      <h1>Anúncios Pendentes</h1>
     </div>
   </div>
   <div class='pull-right'>
@@ -11,9 +11,10 @@
 
 <div class='clear'></div>
 <div class='feeds'>
-  <% if @posts.any? %>
-    <%= render partial: 'shared/post', collection: @posts %>
-    <%= paginate @posts %>
+
+  <% if @pending_posts.any? %>
+    <%= render partial: 'shared/post', collection: @pending_posts %>
+    <%= paginate @pending_posts %>
   <% else %>
     <p>Não há anúncios para serem exibidos.</p>
   <% end %>
