@@ -3,11 +3,15 @@ class Post < ActiveRecord::Base
 
   attr_accessible :title, :description, :price, :attachments_attributes
   has_many :attachments, :as => :attachable, :dependent => :destroy 
-  accepts_nested_attributes_for :attachments
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
 
   after_destroy :remove_id_directory, :remove_tmp_directory
 
   default_scope :order => 'id DESC'
+  validates :title, :presence => true
+
+
+
 
   protected
 

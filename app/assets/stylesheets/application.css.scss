@@ -43,21 +43,58 @@ div.feeds {
   clear: both;
 }
 
-	/* jQuery lightBox plugin - Gallery style */
-	#gallery {
-		background-color: #FFF;
-		padding: 10px;
-		width: 520px;
-	}
-	#gallery ul { list-style: none; }
-	#gallery ul li { display: inline; }
-	#gallery ul img {
-		border: 5px solid #3e3e3e;
-		border-width: 5px 5px 20px;
-	}
-	#gallery ul a:hover img {
-		border: 5px solid #444;
-		border-width: 5px 5px 20px;
-		color: #fff;
-	}
-	#gallery ul a:hover { color: #fff; }
+/* jQuery lightBox plugin - Gallery style */
+#gallery {
+	background-color: #FFF;
+	padding: 10px;
+	width: 520px;
+}
+#gallery ul { list-style: none; }
+#gallery ul li { display: inline; }
+#gallery ul img {
+	border: 5px solid #3e3e3e;
+	border-width: 5px 5px 20px;
+}
+#gallery ul a:hover img {
+	border: 5px solid #444;
+	border-width: 5px 5px 20px;
+	color: #fff;
+}
+#gallery ul a:hover { color: #fff; }
+
+/* Form errors */
+.error_explanation {
+  width: 400px;
+  border: 1px solid #EEE;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: grayLight;
+}
+
+.error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: grayDarker;
+  color: #000;
+}
+
+.error_explanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+.error_explanation ul {
+  margin-top: 10px;
+}
+.error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+.field_with_errors {
+  width: 400px;
+  border: 1px solid #eee;
+}

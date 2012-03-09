@@ -1,6 +1,17 @@
 <%= nested_form_for @post, :html => { :multipart => true, 	:class => 'form-horizontal' } do |f| %>
   <fieldset>
-    <legend>Novo anúncio</legend>
+    <legend><%= params[:action] == 'new'? 'Novo' : 'Editar' %> anúncio</legend>
+
+    <% if @post.errors.any? %>
+        <div class="error_explanation">
+            <h2><%= pluralize(@post.errors.count, "error") %> prohibited data from being send:</h2>
+            <ul>
+                <% @post.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
 
     <div class="control-group">
       <%= f.label :title, "Título", :class => 'control-label' %>
@@ -8,6 +19,7 @@
         <%= f.text_field :title, :class => 'text_field' %>
       </div>
     </div>
+
 
     <div class="control-group">
       <%= f.label :description, "Descrição", :class => 'control-label' %>
@@ -27,9 +39,10 @@
     <div class="control-group">
       <%= attachment_form.label :file, "Arquivo", :class => 'control-label' %>
       <div class="controls">
+        <%= image_tag attachment_form.object.file_url(:small) if attachment_form.object.file? %><br />
+        <%= attachment_form.link_to_remove "Remover a imagem acima" %><br />ou
         <%= attachment_form.file_field :file, :class => 'input-file' %>
       </div>
-      <%= attachment_form.link_to_remove "Remover a imagem acima" %>
     </div>
   <% end %>
   
@@ -38,7 +51,7 @@
   </div>
 
     <div class="form-actions">
-      <%= f.submit nil, :value => "Criar anúncio", :class => 'btn btn-primary' %>
+      <%= f.submit nil, :value => params[:action] == 'new'? 'Salvar' : 'Salvar alterações', :class => 'btn btn-primary' %>
       <%= link_to 'Cancelar', posts_path, :class => 'btn' %>
     </div>
   </fieldset>
