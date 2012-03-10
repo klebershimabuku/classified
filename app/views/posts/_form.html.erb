@@ -29,11 +29,86 @@
     </div>
 
     <div class="control-group">
-      <%= f.label :price, "Preço", :class => 'control-label' %>
+      <%= f.label :price, "Valor em ienes", :class => 'control-label' %>
       <div class="controls">
         <%= f.text_field :price, :class => 'text_field', :value => number_with_precision(f.object.price, :precision => 0) %>
       </div>
     </div>
+
+  <h3>Informações sobre o veículo</h3>
+
+   <div class="control-group">
+      <%= f.label :prefecture, "Localização", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :prefecture, Post::PREFECTURES, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :year, "Ano de Fabricação", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :year, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :shaken_validation, "Validade do Shaken", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :shaken_validation, :class => 'text_field' %>
+      </div>
+    </div>
+
+   <div class="control-group">
+      <%= f.label :makes, "Fabricante", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :makes, Post::MAKES_SORT, :class => 'text_field' %>
+      </div>
+    </div>
+  
+    <div class="control-group">
+      <%= f.label :model, "Modelo", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :model, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :displacement, "Km / l", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :displacement, :class => 'text_field' %>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :mileage, "Kilometragem", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :mileage, :class => 'text_field' %>
+      </div>
+    </div>
+
+   <div class="control-group">
+      <%= f.label :engine, "Motor (cc)", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :engine, :class => 'text_field' %>
+      </div>
+    </div>
+
+   <div class="control-group">
+      <%= f.label :transmission, "Câmbio", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :transmission, Post::TRANSMISSION, :class => 'text_field' %>
+      </div>
+    </div>
+
+   <div class="control-group">
+      <%= f.label :fuel, "Combustível", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.select :fuel, Post::FUEL, :class => 'text_field' %>
+      </div>
+    </div>
+  
+  <h3>Fotos do veículo</h3>
+  <em>* limite de 3 fotos</em>
 
   <%= f.fields_for :attachments do |attachment_form|  %>
     <div class="control-group">
@@ -46,7 +121,7 @@
       </div>
     </div>
   <% end %>
-  
+
   <div class="control-group">
     <p><%= f.link_to_add "Adicionar imagem", :attachments %></p>
   </div>

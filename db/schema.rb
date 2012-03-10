@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309132114) do
+ActiveRecord::Schema.define(:version => 20120310072432) do
 
   create_table "attachments", :force => true do |t|
     t.text     "description"
@@ -27,11 +27,21 @@ ActiveRecord::Schema.define(:version => 20120309132114) do
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "description"
-    t.decimal  "price",       :precision => 10, :scale => 2
-    t.datetime "created_at",                                                        :null => false
-    t.datetime "updated_at",                                                        :null => false
+    t.decimal  "price",             :precision => 10, :scale => 2
+    t.datetime "created_at",                                                              :null => false
+    t.datetime "updated_at",                                                              :null => false
     t.integer  "user_id"
-    t.string   "status",                                     :default => "pending"
+    t.string   "status",                                           :default => "pending"
+    t.string   "prefecture"
+    t.integer  "year"
+    t.string   "shaken_validation"
+    t.string   "makes"
+    t.string   "model"
+    t.string   "displacement"
+    t.integer  "mileage"
+    t.string   "engine"
+    t.string   "transmission"
+    t.string   "fuel"
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"

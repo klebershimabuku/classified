@@ -1,7 +1,11 @@
+#encoding: utf-8
 class Post < ActiveRecord::Base
   before_destroy :remember_id
 
-  attr_accessible :title, :description, :price, :attachments_attributes
+  attr_accessible :title, :description, :price, :attachments_attributes, 
+                    :prefecture, :year, :shaken_validation, :makes, :model, :displacement, 
+                    :mileage, :engine, :transmission, :fuel
+
   has_many :attachments, :as => :attachable, :dependent => :destroy 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
 
@@ -75,6 +79,16 @@ class Post < ActiveRecord::Base
   end
 
   protected
+
+  PREFECTURES = %w(Aichi-ken Akita-ken Aomori-ken Chiba-ken Ehime-ken Fukui-ken Fukuoka-ken Fukushima-ken Gifu-ken Gunma-ken Hiroshima-ken Hokkaido-ken Hyogo-ken Ibaraki-ken Ishikawa-ken Iwate-ken Kagawa-ken Kagoshima-ken Kanagawa-ken Kochi-ken Kumamoto-ken Kyoto-fu Mie-ken Miyagi-ken Miyazaki-ken Nagano-ken Nagasaki-ken Nara-ken Niigata-ken Oita-ken Okayama-ken Okinawa-ken Osaka-fu Saga-ken Saitama-ken Shiga-ken Shimane-ken Shizuoka-ken Tochigi-ken Tokushima-ken Tokyo-to Tottori-ken Toyama-ken Wakayama-ken Yamagata-ken Yamaguchi-ken Yamanashi-ken)
+
+  MAKES = %w(Toyota Nissan Honda Mazda Suzuki Daihatsu Mitsubishi Subaru Alfa-Romeu AMC AMG Audi BMW Chevrolet Chrysler Citroen Dodge Ferrari Lexus Fiat Maserati Ford GMC Hino Hammer Isuzu Jaguar Lamborguini Land-Rover Mercedes-Benz Mini Opel Peugeout Porshe Renault Saab Smart Volkswagem Volvo)
+
+  MAKES_SORT = MAKES.sort << "Outro"
+  
+  TRANSMISSION = %w(Manual Automático)
+
+  FUEL = %w(Gasolina Álcool Diesel Híbrido)
 
   def remember_id
     @id = id
