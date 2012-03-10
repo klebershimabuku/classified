@@ -6,6 +6,6 @@ class Attachment < ActiveRecord::Base
 
   mount_uploader :file, FileUploader
 
-  validates :file, :limit => true
+  validates :file, :file_count => { :maximum => 3 }
   validates :file, :presence => true, :file_size => { :maximum => 0.5.megabytes.to_i }
 end
