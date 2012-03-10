@@ -10,5 +10,6 @@ Classified::Application.routes.draw do
     end
   end
   devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout" } 
-  root :to => 'pages#home'
+  match '/home', :to => 'pages#home'
+  root :to => 'pages#welcome'
 end

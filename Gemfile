@@ -14,6 +14,7 @@ gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
 gem 'rmagick'
 gem 'kaminari'
 gem 'cancan'
+gem 'pry', :group => :development
 
 group :development, :test do
   gem "rspec-rails", "~> 2.6"

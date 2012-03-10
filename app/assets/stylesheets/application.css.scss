@@ -16,7 +16,7 @@ div.feeds {
   
   div.image {
     float: left;
-    padding-right: 5px;
+    padding-right: 15px;
 
     div.no_image {
       display: block;
@@ -98,10 +98,11 @@ div.feeds {
   width: 400px;
   border: 1px solid #eee;
 }
-
-p.price { font-size: 200%; }
-p.description { 
+p.listing-title { font-size: 180%; }
+p.listing-price { font-size: 120%; }
+p.listing-summary { 
   font-size: 18px; 
   padding-bottom: 10px; 
   padding-top: 10px; 
 }
+p.listing-timestamp { padding-left: 100px; }

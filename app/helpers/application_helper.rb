@@ -1,10 +1,10 @@
 module ApplicationHelper
 
   def admin?
-    current_user.role == 'admin'
+    current_user && current_user.role == 'admin'
   end
 
   def user?
-    current_user.role == 'user'
+    current_user && current_user.role == 'user'
   end
 end

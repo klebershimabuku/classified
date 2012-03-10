@@ -3,6 +3,7 @@
 <% else %>
   <div class='image'><div class='no_image'>Sem <br />imagem</div></div>
 <% end %>
-  <p class='title'><%= link_to post.title, post_path(post) %></p>
-  <p class='summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
-  <p class='timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>
+  <p class='listing-title'><%= link_to post.title, post_path(post) %></p>
+  <p class='listing-price'><%= number_to_currency(post.price, :unit => "¥", :precision => 0, :delimiter => ".")%></p>
+  <p class='listing-summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
+  <p class='listing-timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>

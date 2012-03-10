@@ -1,8 +1,11 @@
 class PagesController < ApplicationController
+  layout "posts", only: :home
+
   def home
-    if user_signed_in?
-      @posts = Post.active.page(params[:page])
-    end
+    @posts = Post.active.page(params[:page])
+  end
+
+  def welcome
   end
 
 end

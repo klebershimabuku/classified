@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   load_and_authorize_resource
   before_filter :authenticate_user!, :except => [:index, :show]
   respond_to :html, :js
+  layout "application"
 
   # GET /posts
   # GET /posts.json
@@ -17,11 +18,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @post }
-    end
   end
 
   # GET /posts/new

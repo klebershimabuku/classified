@@ -1,32 +1,12 @@
-<% if user_signed_in? %>
-
-  <% if @posts.any? %>
-
-    <div class="page-header">
-      <h1>Anúncios Recentes</h1>
-    </div>
-
-    <div class='feeds'>
+<% if @posts.any? %>
+  <div class="page-header">
+    <h1>Anúncios Recentes</h1>
+  </div>
+  <div class='feeds'>
     <%= render partial: 'shared/post', collection: @posts %>
-    </div>
-    <%= paginate @posts %>
-  <% else %>
-    <h4>Não há anúncios ativos no momento. Por favor verifique dentro de instantes.</h4>
-  <% end %>
-
+  </div>
+  <%= paginate @posts %>
 <% else %>
-
-
-<div class="hero-unit">
-  <h1>Quer vender seu carro, sua moto, seu avião ou seu barco?</h1>
-  <p>Carecia.com - O lugar ideal para o seu negócio.</p>
-
-<p>
-    <a class="btn btn-primary btn-large">
-      Saiba mais
-    </a>
-  </p>
-
-</div>
-
+  <h4>Não há anúncios ativos no momento. Por favor verifique dentro de instantes.</h4>
 <% end %>
+
