@@ -6,18 +6,6 @@ class FileCountValidator < ActiveModel::EachValidator
   end
 
   def validate_each(record, attribute, value)  
-
-   if value.kind_of?(Array)
-      @count = value unless value.nil?
-      @allow_upload = @count.size > @with
-    end
-  
-  binding.pry    
-
-   record.errors.add(attribute,"#{@with} attachments per post only. #{attribute['file'].size} detected.") if @allow_upload
+   record.errors.add(attribute,"#{@with} attachments per post only. #{attribute['file'].size} detected.") if value.size > @with
   end
-end
-
-class Constants
-  MAX_ATTACHMENTS = 1
 end
