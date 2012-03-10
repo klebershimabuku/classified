@@ -1,0 +1,16 @@
+$('#remote-message').empty();
+
+$('#remote-message').fadeToggle('slow', function() {
+
+  $('#remote-message').append("<%= escape_javascript( 
+      simple_format("<span class='label label-info'>Permissão de Moderador garantida.</span>") 
+    ) %>");
+
+  $('#role').fadeIn(1500, function() {
+      $('#role').empty();
+      $('#role').append("Moderator");
+  });
+
+});
+
+$('#remote-message').fadeOut(6000);

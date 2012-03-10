@@ -9,7 +9,21 @@ Classified::Application.routes.draw do
       get :expire 
     end
   end
-  devise_for :users, :path_names => { :sign_up => "register", :sign_in => "login", :sign_out => "logout" } 
+
+  devise_for :users, :path_prefix => 'd', :path_names => { 
+                                            :sign_up => "register", 
+                                            :sign_in => "login", 
+                                            :sign_out => "logout" 
+                                          }
+
+  resources :users do
+    member do
+      get :turns_manager
+      get :turns_moderator
+      get :turns_user
+    end
+  end
+
   match '/home', :to => 'pages#home'
   root :to => 'pages#welcome'
 end

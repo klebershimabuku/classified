@@ -1,12 +1,13 @@
-<% if @posts.any? %>
-  <div class="page-header">
-    <h1>Anúncios Recentes</h1>
-  </div>
-  <div class='feeds'>
-    <%= render partial: 'shared/post', collection: @posts %>
-  </div>
-  <%= paginate @posts %>
-<% else %>
-  <h4>Não há anúncios ativos no momento. Por favor verifique dentro de instantes.</h4>
-<% end %>
+    <% if @posts.any? %>
 
+      <div class="page-header">
+        <h1>Anúncios Recentes</h1>
+      </div>
+
+        <div class='feeds'>
+          <%= render partial: 'shared/post', collection: @posts %>
+        </div>
+        <%= paginate @posts %>
+    <% else %>
+      <h4>Não há anúncios ativos no momento. Por favor verifique dentro de instantes.</h4>
+    <% end %>

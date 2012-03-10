@@ -22,4 +22,17 @@
     Post.where("user_id = ?", id).order('id desc')
   end
 
+
+  def manager!
+    update_attribute(:role, "manager")
+  end
+
+  def moderator!
+    update_attribute(:role, "moderator")
+  end
+    
+  def user!
+    update_attribute(:role, "user")
+  end
+
 end

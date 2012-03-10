@@ -16,5 +16,4 @@
 //= require_tree .
 $(function() {
   $('#gallery a').lightBox();
-  $('.dropdown-toggle').dropdown()
 });

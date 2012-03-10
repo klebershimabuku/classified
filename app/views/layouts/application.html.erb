@@ -34,6 +34,8 @@
             <% end %>
 
             <% if admin? %>
+            <li class="divider"></li>
+            <li><%= link_to "Usuários do sistema", users_path %></li>
             <li><%= link_to "Anúncios pendentes", pendings_posts_path %></li>
             <% end %>
             <li class="divider"></li>
