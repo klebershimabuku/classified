@@ -1,5 +1,7 @@
 <div class="hero-unit">
-  <h1>Quer vender seu carro, sua moto, seu avião ou seu jet-ski?</h1>
+  <% @item3 = ["seu caminhão", "seu avião"].shuffle.first %>
+  <% @item4 = ["seu jet-ski", "seu barco", "sua lancha"].shuffle.first %>
+  <h1>Quer vender seu carro, sua moto, <%= @item3 %> ou <%= @item4 %>?</h1>
   <p>Carecia.com - O lugar ideal para o seu negócio.</p>
 
 <p>

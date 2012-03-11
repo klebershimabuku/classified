@@ -16,6 +16,14 @@ class Post < ActiveRecord::Base
   default_scope :order => 'id DESC'
   validates :title, :presence => true
   validates :attachments, :file_count => { :maximum => 3 }
+  validates :attachments, :presence => true
+  validates :description, :presence => true
+  validates :price, :presence => true
+  validates :makes, :presence => true
+  validates :model, :presence => true
+  validates :year, :presence => true
+  validates :shaken_validation, :presence => true
+  validates :prefecture, :presence => true
 
 
 

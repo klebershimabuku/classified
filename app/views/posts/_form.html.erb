@@ -4,7 +4,7 @@
 
     <% if @post.errors.any? %>
         <div class="error_explanation">
-            <h2><%= pluralize(@post.errors.count, "error") %> prohibited data from being send:</h2>
+            <h2><%= I18n.translate('activerecord.errors.template.header', {:count => @post.errors.count, :model => @post.class}) %></h2>
             <ul>
                 <% @post.errors.full_messages.each do |msg| %>
                     <li><%= msg %></li>
@@ -40,7 +40,7 @@
    <div class="control-group">
       <%= f.label :prefecture, "Localização", :class => 'control-label' %>
       <div class="controls">
-        <%= f.select :prefecture, Post::PREFECTURES, :class => 'text_field' %>
+        <%= f.select :prefecture, Post::PREFECTURES, :prompt => "Selecione sua Prefeitura" , :class => 'text_field'  %>
       </div>
     </div>
 
