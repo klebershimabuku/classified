@@ -1,0 +1,27 @@
+<% unless params[:mode] %>
+  <h1>Resultados para <em><%= params[:q] %></em></h1>
+  <!--
+  <h3>Está difícil encontrar o que procura?</h3>
+  <h5>Use a <%= link_to "busca avançada", advanced_search_path %></h5>
+  -->
+
+  <hr />
+
+  <div class="feeds">
+  <% if @results.any? %>
+    <%= paginate @results %>
+    <%= render partial: 'shared/post', collection: @results %>
+    <%= paginate @results %>
+  <% else %>
+    <p>Não há anúncios para serem exibidos.</p>
+  <% end %>
+</div>
+
+<% else %>
+
+
+
+
+<% end %>
+
+

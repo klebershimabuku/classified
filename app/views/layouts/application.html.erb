@@ -19,6 +19,12 @@
         <li class="active">
           <a href="<%= home_path %>"><i class="icon-home icon-white"></i>Início</a>
         </li>
+        <li>
+          <%= form_tag search_path, :method => :post, :class => 'navbar-search pull-left' do %>
+            <%= text_field_tag :q, nil, :class => 'search-query', :placeholder => 'Procurar' %>
+          <% end %>
+
+        </li>
       </ul>
       <ul class="nav pull-right">
         <% if user_signed_in? %>

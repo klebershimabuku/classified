@@ -15,6 +15,7 @@ gem 'rmagick'
 gem 'kaminari'
 gem 'cancan'
 gem 'pry', :group => :development
+gem 'meta_search'
 
 group :development, :test do
   gem "rspec-rails", "~> 2.6"

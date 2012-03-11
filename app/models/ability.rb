@@ -18,6 +18,8 @@ class Ability
     end
 
     can :read, :all
+    can :search, Post
+    can :advanced_search, Post
 
     
 

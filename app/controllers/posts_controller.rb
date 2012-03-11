@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = current_user.feed.page(params[:page])
+    @active_posts = current_user.feed.page(params[:page])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @posts }
@@ -78,6 +78,17 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @posts = Post.simple_search(params[:q])
+    @results = @posts.page(params[:page])
+  end
+
+  def advanced_search
+    @search = Post.active.search(params[:search])
+    @advanced_posts = @search.page(params[:page])
+    respond_with(@search)
   end
 
   def pendings

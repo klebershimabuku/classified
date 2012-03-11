@@ -8,6 +8,7 @@ class Post < ActiveRecord::Base
 
   has_many :attachments, :as => :attachable, :dependent => :destroy 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
+  scope :simple_search, lambda { |q| where('title LIKE ?', "%#{q}%") }
 
   after_destroy :remove_id_directory, :remove_tmp_directory
 
@@ -25,8 +26,8 @@ class Post < ActiveRecord::Base
   validates :shaken_validation, :presence => true
   validates :prefecture, :presence => true
 
-
-
+  attr_searchable :title, :description, :price, :makes, :year, :prefecture
+  attr_unsearchable :user_id
   #
   # A new post when created is assign status 'pending' automatically
   # preventing abusive or inapropriate content to be exposed

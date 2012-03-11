@@ -1,0 +1,39 @@
+<h1>Busca Avançada</h1>
+
+  <%= form_for advanced_search_path do |f| %>
+    <p>
+      <%= f.label :title_contains, "Título" %>
+      <%= f.text_field :title_contains %>
+    </p>
+    <p>
+      <%= f.label :price_gte, "Valor entre" %>
+      <%= f.text_field :price_gte, :size => 8 %>
+      <%= f.label :price_lte, "até" %>
+      <%= f.text_field :price_lte, :size => 8 %>
+    </p>
+    <p class="button"><%= f.submit "Procurar", :class => 'btn btn-primary' %></p>
+  <% end %>
+
+
+  <hr />
+
+<p>
+  Ordenar por:
+  <%= sort_link @search, :title %> |
+  <%= sort_link @search, :price %> |
+  <%= sort_link @search, :created_at %>
+</p>
+
+<div class='feeds'>
+
+  <% if @search %>
+
+    <% binding pry %>
+
+    <%= @search.size %>
+    <%= render partial: 'shared/post', collection: @search %>
+  <% else %>
+    <p>Não há anúncios para serem exibidos.</p>
+  <% end %>
+
+</div>
