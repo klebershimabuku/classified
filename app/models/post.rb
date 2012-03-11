@@ -2,19 +2,30 @@
 class Post < ActiveRecord::Base
   before_destroy :remember_id
 
+  # security
   attr_accessible :title, :description, :price, :attachments_attributes, 
                     :prefecture, :year, :shaken_validation, :makes, :model, :displacement, 
                     :mileage, :engine, :transmission, :fuel, :contact_info
 
+  # relationships
   has_many :attachments, :as => :attachable, :dependent => :destroy 
-  accepts_nested_attributes_for :attachments, :allow_destroy => true
-  scope :simple_search, lambda { |q| where('title LIKE ?', "%#{q}%") }
-
-  after_destroy :remove_id_directory, :remove_tmp_directory
-
   belongs_to :user
+  accepts_nested_attributes_for :attachments, :allow_destroy => true
 
+  # scopes
+  scope :simple_search, lambda { |q| where('title LIKE ?', "%#{q}%") }
   default_scope :order => 'id DESC'
+
+  #
+  # Since every new post created with files attached generates
+  # a /tmp folder that are never removed or cleaned by the Carrierwave
+  # after every post update will remove the entire /tmp dir preventing
+  # it to get larger that it should be.
+  #
+  after_update :remove_id_directory, :remove_tmp_directory
+
+
+  # Validations
   validates :title, :presence => true
   validates :attachments, :file_count => { :maximum => 3 }
   validates :attachments, :presence => true
@@ -27,8 +38,22 @@ class Post < ActiveRecord::Base
   validates :prefecture, :presence => true
   validates :contact_info, :presence => true
 
+  #
+  # Columns allowed to be searchable
+  #
   attr_searchable :title, :description, :price, :makes, :year, :prefecture
+  
+  # Column not allowed to be searchable
   attr_unsearchable :user_id
+
+  # Increment the hits when a post is requested
+  def increment_with_sql!(attribute, by = 1)
+    raise ArgumentError("Invalid attribute: #{attribute}") unless attribute_names.include?(attribute.to_s)
+    original_value_sql = "CASE WHEN `#{attribute}` IS NULL THEN 0 ELSE `#{attribute}` END"
+    self.class.update_all("`#{attribute}` = #{original_value_sql} + #{by.to_i}", "id = #{id}")
+    reload
+  end
+
   #
   # A new post when created is assign status 'pending' automatically
   # preventing abusive or inapropriate content to be exposed

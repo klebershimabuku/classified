@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:id]).increment_with_sql!(:hits, 1)
   end
 
   # GET /posts/new
