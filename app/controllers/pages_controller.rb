@@ -18,4 +18,7 @@ class PagesController < ApplicationController
     respond_with(@sender_name)
   end
 
+  def tos
+  end
+
 end

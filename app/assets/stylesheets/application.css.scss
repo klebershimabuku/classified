@@ -127,3 +127,12 @@ p.listing-summary {
   padding-top: 10px; 
 }
 p.listing-timestamp { padding-left: 100px; }
+
+footer {
+  background-color: grayDark;
+  text-align: center;
+}
+footer .container .row .span12 .nav-links { font-size: 140%; }
+footer.footer, .push {
+  height: 6em;
+}

@@ -80,7 +80,7 @@
     </div>
     <div id="remote-message"></div>
     <div class="modal-body">
-      <%= form_tag('/contact', :remote => true) do %>
+      <%= form_tag('/contact', :remote => true, :class => 'form-horizontal') do %>
       <fieldset>
         <legend>Contato / Feedback</legend>
         <p>Está com algum problema, dúvida ou apenas gostaria de enviar uma sugestão?</p>
@@ -124,13 +124,25 @@
       </div>
       <% end %>
           
-<hr>
-  <footer>
-    <div class='pull-left'>&copy; Carecia 2012</div>
-    <div class='pull-right'>Termos e condições de uso | 
-      <a data-toggle="modal" href="#feedback_contactModal">Feedback</a> | Sobre | 
-      <a data-toggle="modal" href="#feedback_contactModal">Contato</a></div>
-  </footer>
+    <hr>
+
+  <div class="push"></div>
+
   </div>
+
+  <footer class='footer'>
+    <div class='container'>
+      <div class="row">
+        <div class="span12">
+          <p class='nav-links'><%= link_to "Termos e condições de uso", tos_path %> | 
+            <a data-toggle="modal" href="#feedback_contactModal">Feedback</a> | 
+            <a href="#">Sobre</a> | 
+            <a data-toggle="modal" href="#feedback_contactModal">Contato</a>
+          </p>
+          <p>&copy; Carecia 2012</p>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

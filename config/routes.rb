@@ -24,6 +24,7 @@ Classified::Application.routes.draw do
     end
   end
 
+  match '/tos', :to => 'pages#tos', :as => 'tos'
   match '/search/advanced', :to => 'posts#advanced_search', :as => 'advanced_search'
   match '/search', :to => 'posts#search', :as => 'search'  
   match '/contact', :to => 'pages#contact', :as => 'contact'
