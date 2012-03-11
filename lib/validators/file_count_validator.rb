@@ -7,7 +7,7 @@ class FileCountValidator < ActiveModel::EachValidator
   end
 
   def validate_each(record, attribute, value)  
-    record.errors.add(nil,"São permitidas apenas #{@with} fotos por anúncio.") if value.size > @with
+    record.errors.add(attribute,"são permitidas apenas #{@with} fotos por anúncio.") if value.size > @with
   end
 
 end

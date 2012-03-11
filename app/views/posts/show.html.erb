@@ -73,6 +73,11 @@
   </tbody>
 </table>
 
+<h2>Contato</h2>
+<%= simple_format @post.contact_info, :class => 'contact_info' %>
+
+<p>Enviado há <%= time_ago_in_words @post.created_at %></p>
+
 <div id='remote-message' class='pull-right'></div>
 
 <div class="form-actions">

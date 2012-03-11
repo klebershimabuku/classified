@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 
   attr_accessible :title, :description, :price, :attachments_attributes, 
                     :prefecture, :year, :shaken_validation, :makes, :model, :displacement, 
-                    :mileage, :engine, :transmission, :fuel
+                    :mileage, :engine, :transmission, :fuel, :contact_info
 
   has_many :attachments, :as => :attachable, :dependent => :destroy 
   accepts_nested_attributes_for :attachments, :allow_destroy => true
@@ -25,6 +25,7 @@ class Post < ActiveRecord::Base
   validates :year, :presence => true
   validates :shaken_validation, :presence => true
   validates :prefecture, :presence => true
+  validates :contact_info, :presence => true
 
   attr_searchable :title, :description, :price, :makes, :year, :prefecture
   attr_unsearchable :user_id

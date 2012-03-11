@@ -1,4 +1,4 @@
-<%= nested_form_for @post, :html => { :multipart => true, 	:class => 'form-horizontal' } do |f| %>
+<%= nested_form_for @post, :html => { :multipart => true, 	:class => 'form-vertical' } do |f| %>
   <fieldset>
     <legend><%= params[:action] == 'new'? 'Novo' : 'Editar' %> anúncio</legend>
 
@@ -16,7 +16,7 @@
     <div class="control-group">
       <%= f.label :title, "Título", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :title, :class => 'text_field' %>
+        <%= f.text_field :title, :class => 'text_field span5' %>
       </div>
     </div>
 
@@ -24,7 +24,7 @@
     <div class="control-group">
       <%= f.label :description, "Descrição", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_area :description, :class => 'text_area', :rows => 10 %>
+        <%= f.text_area :description, :class => 'text_area span5', :rows => 10 %>
       </div>
     </div>
 
@@ -47,14 +47,14 @@
     <div class="control-group">
       <%= f.label :year, "Ano de Fabricação", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :year, :class => 'text_field' %>
+        <%= f.text_field :year, :class => 'text_field span1' %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label :shaken_validation, "Validade do Shaken", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :shaken_validation, :class => 'text_field' %>
+        <%= f.text_field :shaken_validation, :class => 'text_field span2' %>
       </div>
     </div>
 
@@ -75,21 +75,21 @@
     <div class="control-group">
       <%= f.label :displacement, "Km / l", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :displacement, :class => 'text_field' %>
+        <%= f.text_field :displacement, :class => 'text_field span1' %>
       </div>
     </div>
 
     <div class="control-group">
       <%= f.label :mileage, "Kilometragem", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :mileage, :class => 'text_field' %>
+        <%= f.text_field :mileage, :class => 'text_field span1' %>
       </div>
     </div>
 
    <div class="control-group">
       <%= f.label :engine, "Motor (cc)", :class => 'control-label' %>
       <div class="controls">
-        <%= f.text_field :engine, :class => 'text_field' %>
+        <%= f.text_field :engine, :class => 'text_field span1' %>
       </div>
     </div>
 
@@ -107,6 +107,15 @@
       </div>
     </div>
   
+  <h3>Informações para contato</h3>
+    <div class="control-group">
+      <%= f.label :contact_info, "Nome, telefone, horários, email, etc", :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :contact_info, :class => 'text_area span5', :rows => 5 %>
+      </div>
+    </div>
+
+
   <h3>Fotos do veículo</h3>
   <em>* limite de 3 fotos</em>
 
