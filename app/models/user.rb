@@ -8,14 +8,14 @@
   attr_accessible :email, :password, :password_confirmation, :remember_me
   has_many :posts, dependent: :destroy
 
-  ROLES = %w[admin manager moderator user]
+  after_create :send_admin_notification
+
+  def send_admin_notification
+    Mailer.send_admin_notification(self.email).deliver
+  end
 
   def role_symbols
     [role.to_sym]
-  end
-
-  def role?(role)
-    ROLES.include? role.to_s
   end
 
   def feed

@@ -1,0 +1,13 @@
+$(".modal-body").empty();
+
+$("#remote-message").append("<center><h4>Muito obrigado. Sua mensagem foi enviada com sucesso.</h4><hr /><h5>Atenciosamente, Equipe Carecia.com</h5></center>");
+
+$(".modal-footer").empty();
+
+$("#feedback_contactModal").fadeOut(3000, function() {
+    $('#feedback_contactModal').modal('hide');
+    location.reload();
+});
+
+
+

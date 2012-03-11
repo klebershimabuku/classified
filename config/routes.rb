@@ -24,6 +24,7 @@ Classified::Application.routes.draw do
     end
   end
 
+  match '/contact', :to => 'pages#contact', :as => 'contact'
   match '/home', :to => 'pages#home'
   root :to => 'pages#welcome'
 end

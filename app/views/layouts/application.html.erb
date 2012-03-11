@@ -67,14 +67,64 @@
     </div>
   </div>
 
+  <!-- contato modal content -->
+  <div id="feedback_contactModal" class="modal hide fade">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal" >&times;</a>
+    </div>
+    <div id="remote-message"></div>
+    <div class="modal-body">
+      <%= form_tag('/contact', :remote => true) do %>
+      <fieldset>
+        <legend>Contato / Feedback</legend>
+        <p>Está com algum problema, dúvida ou apenas gostaria de enviar uma sugestão?</p>
+        <p>Utilize o formulário abaixo, informando seu nome, email e escreva sua mensagem.</p><br />
 
-      <hr>
+        <div class="control-group">
+          <%= label_tag :sender_name, "Seu nome", :class => 'control-label' %>
+          <div class="controls">
+            <%= text_field_tag :sender_name, nil, :class => 'text_field' %>
+          </div>
+        </div>
 
-      <footer>
-        <div class='pull-left'>&copy; Carecia 2012</div>
-        <div class='pull-right'>Termos e condições de uso | Feedback | Sobre | Contato</div>
-      </footer>
-
-</div>
+        <% if current_user && user_signed_in? %>
+            <%= hidden_field_tag :from, current_user.email %>
+        <% else %>
+        <div class="control-group">
+          <%= label_tag :from, "Seu e-mail", :class => 'control-label' %>
+          <div class="controls">
+            <%= text_field_tag :from, nil, :class => 'text_field' %>
+          </div>
+        </div>
+        <% end %>
+        <div class="control-group">
+          <%= label_tag :subject, "Assunto", :class => 'control-label' %>
+          <div class="controls">
+            <%= text_field_tag :subject, nil, :class => 'text_field' %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= label_tag :message, "Mensagem", :class => 'control-label' %>
+          <div class="controls">
+            <%= text_area_tag :message, nil, :class => 'text_area', :rows => 3 %>
+          </div>
+        </div>
+      </fieldset>
+      </div>
+      <div class="modal-footer">
+        <%= submit_tag nil, :value => 'Enviar', :class => 'btn btn-primary' %>
+        <a href="#" class="btn" data-dismiss="modal" >Cancelar</a>
+      </div>
+      </div>
+      <% end %>
+          
+<hr>
+  <footer>
+    <div class='pull-left'>&copy; Carecia 2012</div>
+    <div class='pull-right'>Termos e condições de uso | 
+      <a data-toggle="modal" href="#feedback_contactModal">Feedback</a> | Sobre | 
+      <a data-toggle="modal" href="#feedback_contactModal">Contato</a></div>
+  </footer>
+  </div>
 </body>
 </html>
