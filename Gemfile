@@ -11,7 +11,7 @@ gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem 'carrierwave'
 gem 'nested_form'
-gem 'rmagick'
+gem 'rmagick', '2.12.2'
 gem 'kaminari'
 gem 'cancan'
 gem 'meta_search'
