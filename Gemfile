@@ -10,7 +10,7 @@ gem 'devise'
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
 gem 'carrierwave'
-gem 'nested_form', :git => 'https://github.com/ryanb/nested_form.git'
+gem 'nested_form', :git => 'git://github.com/ryanb/nested_form.git'
 gem 'rmagick'
 gem 'kaminari'
 gem 'cancan'
