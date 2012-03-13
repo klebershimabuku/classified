@@ -22,7 +22,7 @@ class Post < ActiveRecord::Base
   # after every post update will remove the entire /tmp dir preventing
   # it to get larger that it should be.
   #
-  after_update :remove_id_directory, :remove_tmp_directory
+  after_destroy :remove_id_directory, :remove_tmp_directory
 
 
   # Validations
@@ -133,15 +133,19 @@ class Post < ActiveRecord::Base
   end
 
   def remove_id_directory
-    @q.each do |rm_dir|
-      path_to_be_deleted = "#{Rails.root}/public/uploads/attachment/file/#{rm_dir.id}"
-      logger.debug path_to_be_deleted
-      FileUtils.remove_dir(path_to_be_deleted, :force => true)
-    end 
+    if @q.present?
+      @q.each do |rm_dir|
+        # classified/current/
+        path_to_be_deleted = "../classified/public/uploads/attachment/file/#{rm_dir.id}"
+        logger.debug path_to_be_deleted
+        FileUtils.remove_dir(path_to_be_deleted, :force => true)
+      end 
+    end
   end
 
   def remove_tmp_directory
-    path_to_be_deleted = "#{Rails.root}/public/uploads/tmp"
+    # classified/current/public
+    path_to_be_deleted = "../classified/public/uploads/tmp"
     FileUtils.remove_dir(path_to_be_deleted, :force => true)
   end
 end
