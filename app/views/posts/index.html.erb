@@ -11,7 +11,7 @@
 <div class='clear'></div>
 <div class='feeds'>
   <% if @active_posts.any? %>
-    <%= render partial: 'shared/post', collection: @active_posts %>
+    <%= render partial: 'shared/post', collection: @active_posts, :locals => { :labels => true } %>
     <%= paginate @active_posts %>
   <% else %>
     <p>Não há anúncios para serem exibidos.</p>

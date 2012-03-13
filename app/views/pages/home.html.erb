@@ -6,7 +6,7 @@
   </div>
 
   <div class='feeds'>
-    <%= render partial: 'shared/post', collection: @posts %>
+    <%= render partial: 'shared/post', collection: @posts, :locals => { :labels => false } %>
   </div>
   <%= paginate @posts %>
 

@@ -14,7 +14,7 @@
 <div class='feeds'>
 
   <% if @review_posts.any? %>
-    <%= render partial: 'shared/post', collection: @review_posts %>
+    <%= render partial: 'shared/post', collection: @review_posts, :locals => { :labels => true } %>
     <%= paginate @review_posts %>
   <% else %>
     <p>Não há anúncios para serem exibidos.</p>

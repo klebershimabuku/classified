@@ -204,6 +204,7 @@ pt-BR:
       next: "Próxima página"
       last: "Última página"
       previous: "Página anterior"
+      truncate: ""
 
 
   # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository

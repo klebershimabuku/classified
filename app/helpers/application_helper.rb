@@ -1,3 +1,4 @@
+#encoding: utf-8
 module ApplicationHelper
 
   def admin?
@@ -13,6 +14,18 @@ module ApplicationHelper
       "Carecia | #{title}"
     else
       "Carecia"
+    end
+  end
+
+  def label_for_status(status)
+    if status == 'active'
+      content_tag(:span, "Ativado!", :class => 'label label-success')
+    elsif status == 'pending'
+      content_tag(:span, "Pendente!", :class => 'label label-warning') 
+    elsif status == 'review' 
+      content_tag(:span, "Revisão", :class => 'label label-warning')
+    elsif status == 'expired'
+      content_tagw(:span, "Expirado!", :class => 'label label-danger')
     end
   end
 end

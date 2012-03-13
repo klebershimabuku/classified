@@ -1,15 +1,7 @@
 <% provide(:title, @post.title) %>
 <% if admin? %>
 <div id="status">
-  <% if @post.status == 'active' %>
-  <span class='label label-success'>Ativado!</span>
-  <% elsif @post.status == 'pending' %>
-  <span class='label label-warning'>Pendente!</span>
-  <% elsif @post.status == 'review' %>
-  <span class='label label-warning'>Revisão!</span>
-  <% elsif @post.status == 'expired' %>
-  <span class='label label-danger'>Expirado!</span>
-  <% end %>
+<%= label_for_status(@post.status) %>
 </div>
 <% end %>
 
