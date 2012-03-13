@@ -1,0 +1,23 @@
+<% provide(:title, 'Anúncios em Revisão') %>
+<div class="row9">
+  <div class='pull-left'>
+    <div class="page-header">
+      <h1>Anúncios em Revisão</h1>
+    </div>
+  </div>
+  <div class='pull-right'>
+    <%= link_to 'Novo anúncio', new_post_path, :class => 'btn btn-primary' %>
+  </div>
+</div>
+
+<div class='clear'></div>
+<div class='feeds'>
+
+  <% if @review_posts.any? %>
+    <%= render partial: 'shared/post', collection: @review_posts %>
+    <%= paginate @review_posts %>
+  <% else %>
+    <p>Não há anúncios para serem exibidos.</p>
+  <% end %>
+
+</div>

@@ -60,6 +60,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        @post.review!
         format.html { redirect_to @post, notice: 'Anúncio atualizado com sucesso.' }
         format.json { head :no_content }
       else
@@ -96,6 +97,10 @@ class PostsController < ApplicationController
 
   def pendings
     @pending_posts = Post.pending.page(params[:page])
+  end
+
+  def review 
+    @review_posts = Post.review.page(params[:page])
   end
 
 

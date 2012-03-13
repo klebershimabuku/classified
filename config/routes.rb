@@ -2,6 +2,7 @@ Classified::Application.routes.draw do
   resources :posts do
     collection do
       get :pendings
+      get :review
       get :new_post_successful, :as => 'new_post_successful'
     end
     member do
