@@ -11,6 +11,7 @@ class Ability
 
     if user.role == 'user'
       can :create, Post
+      can :new_post_successful, Post
       cannot [:expire, :destroy], Post
       can :update, Post do |p|
         p.try(:user) == user

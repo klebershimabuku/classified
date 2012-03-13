@@ -9,6 +9,8 @@ class PagesController < ApplicationController
   def welcome
   end
 
+  def successfulsignup; end
+
   def contact
     @subject  = params[:subject]
     @from     = params[:from]

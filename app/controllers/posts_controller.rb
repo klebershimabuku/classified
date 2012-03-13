@@ -44,7 +44,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Anúncio criado com sucesso.' }
+        format.html { redirect_to new_post_successful_posts_path, notice: 'Anúncio criado com sucesso.' }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { render action: "new" }
@@ -80,6 +80,8 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def new_post_successful; end
 
   def search
     @posts = Post.simple_search(params[:q])
