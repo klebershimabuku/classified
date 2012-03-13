@@ -8,6 +8,7 @@
 /.bundle
 /config/*.yml
 /config/initializers/setup_mail.rb
+/config/capistrano_database_yml.rb
 /config/deploy.rb
 /public/uploads
 
