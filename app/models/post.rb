@@ -135,8 +135,7 @@ class Post < ActiveRecord::Base
   def remove_id_directory
     if @q.present?
       @q.each do |rm_dir|
-        # classified/current/
-        path_to_be_deleted = "../classified/public/uploads/attachment/file/#{rm_dir.id}"
+        path_to_be_deleted = "#{Rails.root}/public/uploads/attachment/file/#{rm_dir.id}"
         logger.debug path_to_be_deleted
         FileUtils.remove_dir(path_to_be_deleted, :force => true)
       end 
@@ -144,8 +143,7 @@ class Post < ActiveRecord::Base
   end
 
   def remove_tmp_directory
-    # classified/current/public
-    path_to_be_deleted = "../classified/public/uploads/tmp"
+    path_to_be_deleted = "#{Rails.root}/public/uploads/tmp"
     FileUtils.remove_dir(path_to_be_deleted, :force => true)
   end
 end
