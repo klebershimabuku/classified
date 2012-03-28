@@ -86,6 +86,10 @@ class Post < ActiveRecord::Base
   def activate!
     update_attribute(:status, 'active')
   end
+  
+  def active?
+    status == 'active'
+  end
 
   #
   # It is set to 'review' after the administrator verify it's content

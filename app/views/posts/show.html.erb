@@ -72,6 +72,11 @@
 <p>Enviado há <%= time_ago_in_words @post.created_at %></p>
 <p><%= pluralize(@post.hits, 'visualização') %></p>
 
+<% if @post.active? %>
+<a href="https://twitter.com/share" class="twitter-share-button" data-text="<%= @post.title %> ano <%= @post.year %> por apenas <%= number_to_currency(@post.price, :unit => "¥", :precision => 0, :delimiter => ".") %>" data-via="Carecia" data-lang="pt" data-size="large">Tweetar</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<% end %>
+
 <div id='remote-message' class='pull-right'></div>
 
 <div class="form-actions">
