@@ -11,6 +11,7 @@
 /config/capistrano_database_yml.rb
 /config/deploy.rb
 /public/uploads
+/coverage
 
 # Ignore the default SQLite database.
 /db/*.sqlite3

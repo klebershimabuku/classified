@@ -31,11 +31,4 @@ describe User do
 
   end
 
-  describe "feeds ordering" do
-
-    it "#feed" do
-      pending
-    end
-  end
-
 end

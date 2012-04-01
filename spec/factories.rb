@@ -2,8 +2,26 @@ include ActionDispatch::TestProcess
 
 FactoryGirl.define do
 
-
   factory :user do
+    email 'user@example.com'
+    password 'foobar'
+    role 'user'
+  end
+
+  factory :admin, :parent => :user do
+    email 'admin@example.com'
+    password 'foobar'
+    role 'admin'
+  end
+
+  factory :moderator, :parent => :user do
+    email 'moderator@example.com'
+    password 'foobar'
+    role 'moderator'
+  end
+
+  factory :attachment do
+    file { fixture_file_upload(Rails.root.join(*%w[spec fixtures files example.jpg]), 'image/jpg') }
   end
 
   factory :post do
@@ -16,8 +34,8 @@ FactoryGirl.define do
     contact_info "ryu ryusaki"
     year "2012"
     shaken_validation "dez/2014"
-    attachments [ Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/files/example.jpg"), "image/jpeg") ]
-    #attachments [ File.open(Rails.root.join("spec/fixtures/files/example.jpg")) ]
+    status 'active'
+    attachments { [ FactoryGirl.create(:attachment) ] }
   end
 
 end

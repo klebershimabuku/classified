@@ -13,7 +13,7 @@ module ApplicationHelper
     if title.present?
       "Carecia | #{title}"
     else
-      "Carecia"
+      "Carecia | O lugar ideal para o seu negócio"
     end
   end
 

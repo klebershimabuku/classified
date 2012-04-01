@@ -14,15 +14,6 @@
     Mailer.send_admin_notification(self.email).deliver
   end
 
-  def role_symbols
-    [role.to_sym]
-  end
-
-  def feed
-    Post.where("user_id = ?", id).order('id desc')
-  end
-
-
   def manager!
     update_attribute(:role, "manager")
   end
