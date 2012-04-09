@@ -14,6 +14,10 @@
     Mailer.send_admin_notification(self.email).deliver
   end
 
+  def feed
+    Post.where("user_id = ?", id).order('id desc')	  	
+  end
+
   def manager!
     update_attribute(:role, "manager")
   end
