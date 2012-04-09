@@ -8,3 +8,4 @@
   <p class='listing-price'><%= number_to_currency(post.price, :unit => "¥", :precision => 0, :delimiter => ".")%></p>
   <p class='listing-summary'><%= truncate(post.description, :length => 120, omission: '.. (continue)' ) %></p>
   <p class='listing-timestamp'>Enviado há <%= time_ago_in_words(post.created_at) %></p>
+  <hr />
