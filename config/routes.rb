@@ -32,5 +32,5 @@ Classified::Application.routes.draw do
   match '/search', :to => 'posts#search', :as => 'search'  
   match '/contact', :to => 'pages#contact', :as => 'contact'
   match '/home', :to => 'pages#home'
-  root :to => 'pages#welcome'
+  root :to => 'pages#home'
 end
