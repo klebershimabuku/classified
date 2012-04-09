@@ -12,14 +12,17 @@ describe "StaticPages" do
   #
   describe "Home page" do
 
-    before(:each) { visit root_path }
+    before(:each) do 
+      FactoryGirl.create(:post)
+      visit root_path
+    end
 
-    it "should have the content 'O lugar ideal para o seu negócio' " do
-      should have_selector('h1', :text => "Quer vender seu carro, sua moto")
+    it "should have the content 'Anúncios Recentes' " do
+      should have_selector('h1', :text => "Anúncios Recentes")
     end
 
     it "should have the right title" do
-      should have_selector('title', :text => "#{base_title} | O lugar ideal para o seu negócio")
+      should have_selector('title', :text => "#{base_title} | Home")
     end
   end
 
