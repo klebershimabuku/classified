@@ -2,7 +2,7 @@
 
 Classifieds is a simple classified but targeting on vehicles niche.
 
-The language used on the views is portuguese from Brazil since it is made for brazilians at the begginer.
+The language used on the views is portuguese from Brazil since it is made for brazilians at the beginner.
 
 === Todo
 
